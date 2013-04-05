@@ -9,13 +9,13 @@ import util.control.Exception._
 class HttpBL(val accessKey: String) {
   val service = "dnsbl.httpbl.org"
 
-  def query(ip: Seq[String]) = "%s.%s.%s".format(accessKey, ip.reverse mkString ".", service)
+  def query(ip: InetAddress) = "%s.%s.%s".format(accessKey, ip.getHostAddress.reverse mkString ".", service)
 
-  def apply(ip: String): Option[HttpBL.Response] =
-    apply(ip split """\.""")
+  def apply(ip: String): Option[HttpBL.Response] = apply(InetAddress getByName ip)
 
-  def apply(ip: Seq[String]): Option[HttpBL.Response] = {
-    require(ip.length == 4)
+  def apply(ip: Array[Byte]): Option[HttpBL.Response] = apply(InetAddress getByAddress ip)
+
+  def apply(ip: InetAddress): Option[HttpBL.Response] = {
     catching(classOf[UnknownHostException]).opt {
       val addr = InetAddress getByName query(ip)
       HttpBL.decode(addr.getHostAddress)
