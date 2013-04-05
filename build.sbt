@@ -20,6 +20,13 @@ description := """http:BL API"""
 
 scalacOptions ++= List("-deprecation", "-unchecked")
 
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "2.0.M5b" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
+)
+
+testOptions in Test += Tests.Argument("-oDS")
+
 credentials <+= (version) map { version: String =>
   val file =
     if (version.trim endsWith "SNAPSHOT") "credentials_osinka"

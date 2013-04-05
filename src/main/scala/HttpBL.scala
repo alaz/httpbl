@@ -11,10 +11,10 @@ class HttpBL(val accessKey: String) {
 
   def query(ip: Seq[String]) = "%s.%s.%s".format(accessKey, ip.reverse mkString ".", service)
 
-  def lookup(ip: String): Option[HttpBL.Response] =
-    lookup(ip split """\.""")
+  def apply(ip: String): Option[HttpBL.Response] =
+    apply(ip split """\.""")
 
-  def lookup(ip: Seq[String]): Option[HttpBL.Response] = {
+  def apply(ip: Seq[String]): Option[HttpBL.Response] = {
     require(ip.length == 4)
     catching(classOf[UnknownHostException]).opt {
       val addr = InetAddress getByName query(ip)
@@ -29,7 +29,7 @@ object HttpBL {
   val Harvester      = 2
   val CommentSpammer = 4
 
-  case class Response(days: Int, weight: Int, flags: Int) {
+  case class Response(days: Int, threat: Int, flags: Int) {
     def isSearchEngine = flags == SearchEngine
     def isSuspicious = (flags & Suspicious) != 0
     def isHarvester = (flags & Harvester) != 0
@@ -39,7 +39,7 @@ object HttpBL {
   def apply(accessKey: String) = new HttpBL(accessKey)
 
   private[httpbl] def decode(response: String) = response split """\.""" match {
-    case Array("127", days, weight, flags) => Response(days.toInt, weight.toInt, flags.toInt)
+    case Array("127", days, threat, flags) => Response(days.toInt, threat.toInt, flags.toInt)
     case _ => throw new UnknownResponseException(response)
   }
 
