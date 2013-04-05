@@ -16,7 +16,7 @@ licenses += "Apache License, Version 2.0" -> url("http://www.apache.org/licenses
 
 organizationName := "Osinka"
 
-description := """Making slugs out of any string"""
+description := """http:BL API"""
 
 scalacOptions ++= List("-deprecation", "-unchecked")
 
@@ -42,7 +42,7 @@ useGpg := true
 
 seq(lsSettings: _*)
 
-(LsKeys.tags in LsKeys.lsync) := Seq("slug", "httpbl")
+(LsKeys.tags in LsKeys.lsync) := Seq("spam", "blacklist", "dnsbl", "http:bl")
 
 (LsKeys.docsUrl in LsKeys.lsync) := Some(url("https://github.com/osinka/httpbl"))
 
