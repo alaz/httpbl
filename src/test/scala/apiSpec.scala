@@ -8,7 +8,7 @@ import org.scalacheck.Gen
 /**
  * sbt -DKEY=accessKey test
  */
-class httpBLSpec extends FunSpec with ShouldMatchers with PropertyChecks {
+class apiSpec extends FunSpec with ShouldMatchers with PropertyChecks {
   type FixtureParam = HttpBL
 
   implicit override val generatorDrivenConfig = PropertyCheckConfig(maxSize = 3)

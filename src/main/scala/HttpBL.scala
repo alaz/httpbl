@@ -9,7 +9,11 @@ import util.control.Exception._
 class HttpBL(val accessKey: String) {
   val service = "dnsbl.httpbl.org"
 
-  def query(ip: InetAddress) = "%s.%s.%s".format(accessKey, ip.getHostAddress.reverse mkString ".", service)
+  def query(ip: InetAddress) = {
+    val bytes = ip.getAddress
+    def octet(n: Int) = bytes(n) & 0xFF
+    "%s.%d.%d.%d.%d.%s".format(accessKey, octet(3), octet(2), octet(1), octet(0), service)
+  }
 
   def apply(ip: String): Option[HttpBL.Response] = apply(InetAddress getByName ip)
 
