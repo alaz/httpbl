@@ -19,12 +19,11 @@ class HttpBL(val accessKey: String) {
 
   def apply(ip: Array[Byte]): Option[HttpBL.Response] = apply(InetAddress getByAddress ip)
 
-  def apply(ip: InetAddress): Option[HttpBL.Response] = {
+  def apply(ip: InetAddress): Option[HttpBL.Response] =
     catching(classOf[UnknownHostException]).opt {
       val addr = InetAddress getByName query(ip)
       HttpBL.decode(addr.getHostAddress)
     }
-  }
 }
 
 object HttpBL {
