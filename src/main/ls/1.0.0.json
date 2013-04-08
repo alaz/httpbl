@@ -1,0 +1,17 @@
+{
+  "organization" : "com.osinka.httpbl",
+  "name" : "httpbl",
+  "version" : "1.0.0",
+  "description" : "http:BL API",
+  "site" : "https://github.com/osinka/httpbl",
+  "tags" : [ "spam", "blacklist", "dnsbl", "http:bl" ],
+  "docs" : "https://github.com/osinka/httpbl",
+  "resolvers" : [ "https://oss.sonatype.org/content/repositories/releases" ],
+  "dependencies" : [ ],
+  "scalas" : [ "2.9.1", "2.10.0" ],
+  "licenses" : [ {
+    "name" : "Apache License, Version 2.0",
+    "url" : "http://www.apache.org/licenses/LICENSE-2.0"
+  } ],
+  "sbt" : false
+}
