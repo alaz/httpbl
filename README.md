@@ -28,9 +28,15 @@ import com.osinka.httpbl._
 val api = HttpBL(accessKey)
 
 val response = api("127.0.0.1")
-api.isSearchEngine
-api.isHarvester
-api.isCommentSpammer
-api.days   // how many days this IP has been seen
-api.threat // threat level
+response match {
+  case Some(found) =>
+    found.isSearchEngine
+    found.isHarvester
+    found.isCommentSpammer
+    found.days   // how many days this IP has been seen
+    found.threat // threat level
+    
+  case None =>
+    // not found
+}
 ```
