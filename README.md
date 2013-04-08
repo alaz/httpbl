@@ -33,7 +33,7 @@ response match {
     found.isSearchEngine
     found.isHarvester
     found.isCommentSpammer
-    found.days   // how many days this IP has been seen
+    found.days   // how many days ago this IP has been seen
     found.threat // threat level
     
   case None =>
