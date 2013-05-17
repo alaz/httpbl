@@ -22,7 +22,7 @@ scalacOptions ++= List("-deprecation", "-unchecked")
 
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.0.M5b" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
+  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
 )
 
 testOptions in Test += Tests.Argument("-oDS")
