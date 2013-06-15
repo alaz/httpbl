@@ -8,9 +8,9 @@ homepage := Some(url("https://github.com/osinka/httpbl"))
 
 startYear := Some(2013)
 
-scalaVersion := "2.10.0"
+scalaVersion := "2.10.2"
 
-crossScalaVersions := Seq("2.9.1", "2.10.0")
+crossScalaVersions := Seq("2.9.1", "2.10.2")
 
 licenses += "Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 
