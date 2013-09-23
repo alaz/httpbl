@@ -1,14 +1,14 @@
 package com.osinka.httpbl
 
 import org.scalatest.fixture.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.{Canceled, Matchers}
 import org.scalatest.prop.PropertyChecks
 import org.scalacheck.Gen
 
 /**
  * sbt -DKEY=accessKey test
  */
-class apiSpec extends FunSpec with ShouldMatchers with PropertyChecks {
+class apiSpec extends FunSpec with Matchers with PropertyChecks {
   type FixtureParam = HttpBL
 
   implicit override val generatorDrivenConfig = PropertyCheckConfig(maxSize = 3)
@@ -17,14 +17,10 @@ class apiSpec extends FunSpec with ShouldMatchers with PropertyChecks {
   val threats = Table("threat", 10, 20, 40, 80)
   val days    = Table("days",   10, 20, 40, 80)
 
-  override def withFixture(test: OneArgTest) {
+  override def withFixture(test: OneArgTest) = {
     System.getProperty("KEY") match {
-      case null =>
-        // skip test
-
-      case accessKey =>
-        val api = HttpBL(accessKey)
-        withFixture(test.toNoArgTest(api))
+      case null => Canceled("requires API key")
+      case accessKey => test(HttpBL(accessKey))
     }
   }
 

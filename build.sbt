@@ -1,5 +1,3 @@
-import ls.Plugin._
-
 organization := "com.osinka.httpbl"
 
 name := "httpbl"
@@ -8,9 +6,9 @@ homepage := Some(url("https://github.com/osinka/httpbl"))
 
 startYear := Some(2013)
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
-crossScalaVersions := Seq("2.9.1", "2.10.2")
+crossScalaVersions := Seq("2.9.1", "2.10.3")
 
 licenses += "Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 
@@ -21,7 +19,7 @@ description := """http:BL API"""
 scalacOptions ++= List("-deprecation", "-unchecked")
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.0.M5b" % "test",
+  "org.scalatest" %% "scalatest" % "2.0.RC1" % "test",
   "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
 )
 
@@ -46,12 +44,6 @@ publishTo <<= (version) { version: String =>
 }
 
 useGpg := true
-
-seq(lsSettings: _*)
-
-(LsKeys.tags in LsKeys.lsync) := Seq("spam", "blacklist", "dnsbl", "http:bl")
-
-(LsKeys.docsUrl in LsKeys.lsync) := Some(url("https://github.com/osinka/httpbl"))
 
 pomExtra := <xml:group>
     <developers>

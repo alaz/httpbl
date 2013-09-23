@@ -1,12 +1,11 @@
 package com.osinka.httpbl
 
 import java.net.InetAddress
-import org.scalatest.FunSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.prop.PropertyChecks
 import org.scalacheck.Gen
 
-class addrSpec extends FunSpec with ShouldMatchers with PropertyChecks {
+class addrSpec extends FunSpec with Matchers with PropertyChecks {
   val apiKey = "temp"
   val api = HttpBL(apiKey)
 
