@@ -19,8 +19,8 @@ description := """http:BL API"""
 scalacOptions ++= List("-deprecation", "-unchecked")
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.0.RC1" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.10.1" % "test"
+  "org.scalatest" %% "scalatest" % "2.1.0" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.11.3" % "test"
 )
 
 testOptions in Test += Tests.Argument("-oDS")
