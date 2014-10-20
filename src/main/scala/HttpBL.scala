@@ -26,14 +26,41 @@ class HttpBL(val accessKey: String) {
     }
 }
 
-object HttpBL {
+object Types {
   val SearchEngine   = 0
   val Suspicious     = 1
   val Harvester      = 2
   val CommentSpammer = 4
+}
 
-  case class Response(days: Int, threat: Int, flags: Int) {
-    def isSearchEngine = flags == SearchEngine
+object SearchEngines {
+  val Undocumented   = 0
+  val AltaVista      = 1
+  val Ask            = 2
+  val Baidu          = 3
+  val Excite         = 4
+  val Google         = 5
+  val Looksmart      = 6
+  val Lycos          = 7
+  val MSN            = 8
+  val Yahoo          = 9
+  val Cuil           = 10
+  val InfoSeek       = 11
+  val Miscellaneous  = 12
+}
+
+object HttpBL {
+  import Types._
+
+  trait Response {
+    def flags: Int
+
+    def isSearchEngine = flags == Types.SearchEngine
+  }
+
+  case class SearchEngine(serial: Int, flags: Int) extends Response
+
+  case class Result(days: Int, threat: Int, flags: Int) extends Response {
     def isSuspicious = (flags & Suspicious) != 0
     def isHarvester = (flags & Harvester) != 0
     def isCommentSpammer = (flags & CommentSpammer) != 0
@@ -42,7 +69,8 @@ object HttpBL {
   def apply(accessKey: String) = new HttpBL(accessKey)
 
   private[httpbl] def decode(response: String) = response split """\.""" match {
-    case Array("127", days, threat, flags) => Response(days.toInt, threat.toInt, flags.toInt)
+    case Array("127", _, serial, "0") => SearchEngine(serial.toInt, 0)
+    case Array("127", days, threat, flags) => Result(days.toInt, threat.toInt, flags.toInt)
     case _ => throw new UnknownResponseException(response)
   }
 

@@ -6,9 +6,9 @@ homepage := Some(url("https://github.com/osinka/httpbl"))
 
 startYear := Some(2013)
 
-scalaVersion := "2.11.0"
+scalaVersion := "2.11.2"
 
-crossScalaVersions := Seq("2.11.0", "2.10.4")
+crossScalaVersions := Seq("2.11.2", "2.10.4")
 
 licenses += "Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")
 
@@ -19,8 +19,8 @@ description := """http:BL API"""
 scalacOptions ++= List("-deprecation", "-unchecked")
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "2.1.3" % "test",
-  "org.scalacheck" %% "scalacheck" % "1.11.3" % "test"
+  "org.scalatest" %% "scalatest" % "2.2.2" % "test",
+  "org.scalacheck" %% "scalacheck" % "1.11.6" % "test"
 )
 
 testOptions in Test += Tests.Argument("-oDS")
