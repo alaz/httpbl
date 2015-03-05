@@ -1,5 +1,7 @@
 # http:BL API in Scala
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.osinka.httpbl/httpbl_2.11/badge.png)](https://maven-badges.herokuapp.com/maven-central/com.osinka.httpbl/httpbl_2.11)
+
 "http:BL" API is similar to DNSBL, but for web traffic rather than mail traffic. The specification is [here](http://www.projecthoneypot.org/httpbl_api.php)
 
 ## Using
