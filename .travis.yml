@@ -1,0 +1,11 @@
+language: scala
+scala:
+  - 2.10.5
+  - 2.11.6
+sbt_args: -no-colors
+branches:
+  only:
+    - master
+jdk:
+  - oraclejdk7
+  - oraclejdk8
