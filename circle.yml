@@ -1,0 +1,8 @@
+general:
+  branches:
+    only:
+      - master
+dependencies:
+  cache_directories:
+    - "~/.m2"
+    - "~/.ivy2"
