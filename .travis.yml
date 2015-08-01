@@ -3,10 +3,14 @@ language: scala
 scala:
   - 2.10.5
   - 2.11.6
-sbt_args: -no-colors
 branches:
   only:
     - master
 jdk:
   - oraclejdk7
-  - oraclejdk8
+script:
+   - sbt -Dfile.encoding=UTF8 -no-colors ++$TRAVIS_SCALA_VERSION test
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot/
