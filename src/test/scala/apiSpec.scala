@@ -11,7 +11,7 @@ import org.scalacheck.Gen
 class apiSpec extends FunSpec with Matchers with PropertyChecks {
   type FixtureParam = HttpBL
 
-  implicit override val generatorDrivenConfig = PropertyCheckConfig(maxSize = 3)
+  implicit override val generatorDrivenConfig = PropertyCheckConfiguration(sizeRange = 3)
 
   val types   = Gen.chooseNum(0,7)
   val threats = Table("threat", 10, 20, 40, 80)
